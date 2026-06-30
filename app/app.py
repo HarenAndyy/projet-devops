@@ -1,17 +1,23 @@
 from flask import Flask
-import datetime, platform
+import datetime
+import platform
 
 app = Flask(__name__)
-VERSION = "2.0.0"
+VERSION = "2.1.0"
 
 @app.route("/")
 def index():
-    msg = f"Déployé le {datetime.datetime.now().strftime('%d/%m/%Y à %H:%M:%S')}"
+    now = datetime.datetime.now().strftime("%d/%m/%Y à %H:%M:%S")
     return f"""
-    <h1>Application DevOps</h1>
-    <p><strong>Version :</strong> {VERSION}</p>
-    <p><strong>Message :</strong> {msg}</p>
-    <p><strong>Serveur :</strong> {platform.node()}</p>
+    <html>
+    <head><title>App DevOps</title></head>
+    <body style="font-family: Arial; text-align: center; margin-top: 100px;">
+        <h1>Application DevOps</h1>
+        <p><strong>Version :</strong> {VERSION}</p>
+        <p><strong>Message :</strong> Déployé le {now}</p>
+        <p><strong>Serveur :</strong> {platform.node()}</p>
+    </body>
+    </html>
     """
 
 if __name__ == "__main__":
