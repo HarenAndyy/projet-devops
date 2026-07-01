@@ -3,7 +3,7 @@ import datetime
 import platform
 
 app = Flask(__name__)
-VERSION = "2.1.0"
+VERSION = "2.2.0"
 
 @app.route("/")
 def index():
